@@ -6,10 +6,11 @@ import java.util.concurrent.atomic.AtomicLong;
 
 import com.daeso.nar01.model.Grade;
 import com.daeso.nar01.model.Greeting;
+import com.daeso.nar01.model.Student;
 import com.daeso.nar01.repository.GradeRepository;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import com.daeso.nar01.repository.StudentRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class GreetingController {
@@ -18,7 +19,11 @@ public class GreetingController {
     private final AtomicLong counter = new AtomicLong();
 
 
+    @Autowired
     private GradeRepository gradeRepository;
+
+    @Autowired
+    private StudentRepository studentRepository;
 
     @GetMapping("/greeting")
     public Greeting greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
@@ -48,5 +53,13 @@ public class GreetingController {
     @GetMapping("/jpgrade")
     public List<Grade> jpgrade() {
         return gradeRepository.findAll();
+    }
+
+    @PostMapping("getstudent")
+    public List<Student> getStudent(
+            @RequestBody(required = false) Student student ) {
+        List<Student> list = studentRepository.findByClsAndGrade(student.getGrade(),student.getCls());
+        System.out.println(list);
+        return list;
     }
 }

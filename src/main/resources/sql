@@ -1,0 +1,4 @@
+INSERT INTO `nar`.`student` (`student_id`, `cls`, `clsnum`, `grade`, `isborrow`, `name`) VALUES ('1', '1', '1', '1', true,'홍길동');
+INSERT INTO `nar`.`student` (`student_id`, `cls`, `clsnum`, `grade`, `isborrow`, `name`) VALUES ('2','1', '2', '1', false, '김길동');
+INSERT INTO `nar`.`student` (`student_id`, `cls`, `clsnum`, `grade`, `isborrow`, `name`) VALUES ('3','3', '1', '1', true, '박길동');
+INSERT INTO `nar`.`student` (`student_id`, `cls`, `clsnum`, `grade`, `isborrow`, `name`) VALUES ('4','2', '2', '1', false, '이길동');
